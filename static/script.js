@@ -20,7 +20,7 @@ document.getElementById("analyzeForm").addEventListener("submit", async function
         const data = await response.json();
 
         if (!response.ok) {
-            result.innerHTML = '<p style="color:red;">${data.error}</p>';
+            result.innerHTML = '<p style="color:red;">Please enter a valid website URL.</p>';
             return;
         }
 
@@ -36,6 +36,6 @@ document.getElementById("analyzeForm").addEventListener("submit", async function
             </div>
         `;
     } catch (error) {
-        result.innerHTML = '<p style="color:red;">Error: ${error.message}</p>';
+        result.innerHTML = '<p style="color:red;">Unable to analyze this website.Please check the URL andtry again.</p>';
     }
 });
