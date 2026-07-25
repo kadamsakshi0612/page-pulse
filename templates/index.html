@@ -1,41 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Pulse</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <div class="container">
 
-<h1>Page Pulse</h1>
+    <h1>Page Pulse</h1>
 
-<form method="POST">
-    <input type="text" name="url" placeholder="https://example.com" required>
-    <button type="submit">Analyze</button>
-</form>
+    <form id="analyzeForm">
+        <input
+            type="text"
+            id="url"
+            placeholder="https://example.com"
+            required
+        >
 
-{% if report %}
-<div class="report">
-<div class="card"><b>HTTP Status:</b> {{report.status}}</div>
-<div class="card"><b>Response Time:</b> {{report.time}} sec</div>
-<div class="card"><b>Title:</b> {{report.title}}</div>
-<div class="card"><b>Meta Description:</b> {{report.meta}}</div>
-<div class="card"><b>H1 Count:</b> {{report.h1}}</div>
-<div class="card"><b>Images Missing Alt:</b> {{report.missing_alt}}</div>
-<div class="card"><b>Word Count:</b> {{report.word_count}}</div>
-</div>
-{% endif %}
+        <button type="submit">
+            Analyze
+        </button>
+    </form>
 
-{% if error %}
-<p style="color:red">{{error}}</p>
-{% endif %}
+    <div id="result"></div>
 
-<footer>
-Built for <a href="https://digitalheroesco.com" target="_blank">Digital Heroes Training Task</a>
-</footer>
+    <footer>
+        Built for
+        <a href="https://digitalheroesco.com" target="_blank">
+            Digital Heroes Training Task
+        </a>
+    </footer>
 
 </div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>
